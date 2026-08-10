@@ -17,13 +17,11 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
-
-from miapp.views import productos
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('productos/', productos, name='productos'),
+    path('', include('miapp.urls')),
 ]
 
 if settings.DEBUG:
