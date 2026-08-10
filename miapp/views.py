@@ -1,12 +1,21 @@
 from django.shortcuts import render
+from .models import Producto
 
 
 def home(request):
-    return render(request, 'miapp/home.html')
+    productos = Producto.objects.all()
+
+    return render(request, 'miapp/home.html', {
+        'productos': productos
+    })
 
 
 def productos(request):
-    return render(request, 'miapp/productos.html')
+    productos = Producto.objects.all()
+
+    return render(request, 'miapp/productos.html', {
+        'productos': productos
+    })
 
 
 def acerca_de_mi(request):
