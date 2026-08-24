@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Acerca de mí</title>
-</head>
-<body>
+{% extends "miapp/base.html" %}
 
-    <h1>Acerca de mí</h1>
+{% block title %}Acerca de mí - Tienda Libre{% endblock %}
 
-    <p>Hola, soy Lorenzo.</p>
+{% block content %}
 
-    <p>
-        Estoy aprendiendo desarrollo web con Python y Django.
-    </p>
+<h1>Acerca de mí</h1>
 
-    <a href="/">Volver al inicio</a>
+<p>Hola, soy Lorenzo.</p>
 
-</body>
-</html>
+<p>
+    Estoy aprendiendo desarrollo web con Python y Django.
+</p>
+
+<a href="/" class="btn btn-secondary">
+    Volver al inicio
+</a>
+
+{% endblock %}

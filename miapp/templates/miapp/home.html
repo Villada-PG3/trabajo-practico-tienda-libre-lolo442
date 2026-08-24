@@ -1,81 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Libre</title>
-</head>
+{% extends "miapp/base.html" %}
 
-<body>
+{% block title %}Inicio - Tienda Libre{% endblock %}
 
-    <header>
-        <h1>Tienda Libre</h1>
+{% block content %}
 
-        <nav>
-            <a href="/">Inicio</a> |
-            <a href="/productos/">Productos</a> |
-            <a href="/acerca-de-mi/">Acerca de mí</a>
-        </nav>
-    </header>
+<section>
+    <h1>Bienvenido a Tienda Libre</h1>
 
-    <hr>
+    <p>
+        Encontrá todo lo que necesitás en un solo lugar.
+        Tenemos productos de diferentes categorías.
+    </p>
 
-    <main>
+    <a href="/productos/" class="btn btn-primary">
+        Ver nuestros productos →
+    </a>
+</section>
 
-        <section>
-            <h2>Bienvenido a Tienda Libre</h2>
+<hr>
 
-            <p>
-                Encontrá todo lo que necesitás en un solo lugar.
-                Tenemos productos de diferentes categorías.
-            </p>
+<section>
+    <h2>¿Qué podés encontrar?</h2>
 
-            <a href="/productos/">Ver nuestros productos →</a>
-        </section>
+    <ul>
+        <li>Herramientas</li>
+        <li>Hogar y cocina</li>
+        <li>Electrónica</li>
+        <li>Alimentos</li>
+        <li>Entretenimiento</li>
+    </ul>
+</section>
 
-        <hr>
+<hr>
 
-        <section>
-            <h2>¿Qué podés encontrar?</h2>
+<section>
+    <h2>¿Por qué elegirnos?</h2>
 
-            <ul>
-                <li>Herramientas</li>
-                <li>Hogar y cocina</li>
-                <li>Electrónica</li>
-                <li>Alimentos</li>
-                <li>Entretenimiento</li>
-            </ul>
-        </section>
+    <article>
+        <h3>Variedad</h3>
+        <p>Contamos con productos de diferentes categorías.</p>
+    </article>
 
-        <hr>
+    <article>
+        <h3>Buenos precios</h3>
+        <p>Buscamos ofrecer productos a precios accesibles.</p>
+    </article>
 
-        <section>
-            <h2>¿Por qué elegirnos?</h2>
+    <article>
+        <h3>Calidad</h3>
+        <p>Seleccionamos productos para nuestra tienda.</p>
+    </article>
+</section>
 
-            <article>
-                <h3>Variedad</h3>
-                <p>Contamos con productos de diferentes categorías.</p>
-            </article>
-
-            <article>
-                <h3>Buenos precios</h3>
-                <p>Buscamos ofrecer productos a precios accesibles.</p>
-            </article>
-
-            <article>
-                <h3>Calidad</h3>
-                <p>Seleccionamos productos para nuestra tienda.</p>
-            </article>
-        </section>
-
-    </main>
-
-    <hr>
-
-    <footer>
-        <p>© 2026 Tienda Libre</p>
-        <p>Proyecto realizado con Django y Python.</p>
-    </footer>
-
-</body>
-</html>
+{% endblock %}
