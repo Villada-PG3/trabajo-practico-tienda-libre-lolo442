@@ -1,3 +1,4 @@
+```html
 {% extends "miapp/base.html" %}
 
 {% block title %}Inicio - Tienda Libre{% endblock %}
@@ -5,7 +6,7 @@
 {% block content %}
 
 <section>
-    <h1>Bienvenido a Tienda Libre</h1>
+    <h1>Bienvenido a {{ nombre|title }}</h1>
 
     <p>
         Encontrá todo lo que necesitás en un solo lugar.
@@ -15,6 +16,49 @@
     <a href="/productos/" class="btn btn-primary">
         Ver nuestros productos →
     </a>
+</section>
+
+<hr>
+
+<section>
+    <h2>Productos destacados</h2>
+
+    <p>
+        Tenemos {{ productos_destacados|length }} productos destacados.
+    </p>
+
+    {% for producto in productos_destacados %}
+
+        <article>
+            <h3>{{ producto.nombre|title }}</h3>
+
+            <p>
+                Marca: {{ producto.marca|upper }}
+            </p>
+
+            <p>
+                Precio:
+                ${{ producto.precio|default:"sin dato" }}
+            </p>
+
+            {% if producto.descripcion %}
+                <p>
+                    {{ producto.descripcion|truncatechars:50 }}
+                </p>
+            {% else %}
+                <p>
+                    Sin descripción.
+                </p>
+            {% endif %}
+        </article>
+
+    {% empty %}
+
+        <p>
+            No hay productos destacados.
+        </p>
+
+    {% endfor %}
 </section>
 
 <hr>
