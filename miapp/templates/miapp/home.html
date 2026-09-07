@@ -5,6 +5,19 @@
 
 {% block content %}
 
+<style>
+    .productos-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .productos-grid article {
+        border: 1px solid #ccc;
+        padding: 15px;
+    }
+</style>
+
 <section>
     <h1>Bienvenido a {{ nombre|title }}</h1>
 
@@ -27,38 +40,41 @@
         Tenemos {{ productos_destacados|length }} productos destacados.
     </p>
 
-    {% for producto in productos_destacados %}
+    <div class="productos-grid">
 
-        <article>
-            <h3>{{ producto.nombre|title }}</h3>
+        {% for producto in productos_destacados %}
+
+            <article>
+                <h3>{{ producto.nombre|title }}</h3>
+
+                <p>
+                    Marca: {{ producto.marca|upper }}
+                </p>
+
+                <p>
+                    Precio: ${{ producto.precio|default:"sin dato" }}
+                </p>
+
+                {% if producto.descripcion %}
+                    <p>
+                        {{ producto.descripcion|truncatechars:50 }}
+                    </p>
+                {% else %}
+                    <p>
+                        Sin descripción.
+                    </p>
+                {% endif %}
+            </article>
+
+        {% empty %}
 
             <p>
-                Marca: {{ producto.marca|upper }}
+                No hay productos destacados.
             </p>
 
-            <p>
-                Precio:
-                ${{ producto.precio|default:"sin dato" }}
-            </p>
+        {% endfor %}
 
-            {% if producto.descripcion %}
-                <p>
-                    {{ producto.descripcion|truncatechars:50 }}
-                </p>
-            {% else %}
-                <p>
-                    Sin descripción.
-                </p>
-            {% endif %}
-        </article>
-
-    {% empty %}
-
-        <p>
-            No hay productos destacados.
-        </p>
-
-    {% endfor %}
+    </div>
 </section>
 
 <hr>
@@ -97,3 +113,4 @@
 </section>
 
 {% endblock %}
+```

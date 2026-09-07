@@ -68,3 +68,7 @@ def productos(request):
 
 def acerca_de_mi(request):
     return render(request, 'miapp/acerca-de-mi.html')
+
+def catalogo(request):
+    productos = Producto.objects.all()
+    return render(request, "miapp/catalogo.html", {"productos": productos})
