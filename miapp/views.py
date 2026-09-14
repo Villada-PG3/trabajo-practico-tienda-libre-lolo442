@@ -1,5 +1,5 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Producto
 
 
@@ -70,5 +70,14 @@ def acerca_de_mi(request):
     return render(request, 'miapp/acerca-de-mi.html')
 
 def catalogo(request):
-    productos = Producto.objects.all()
-    return render(request, "miapp/catalogo.html", {"productos": productos})
+    productos = Producto.objects.filter(activo=True)
+    return render(request, "tiendalibre/catalogo.html", {
+        "productos": productos
+    })
+
+def detalle_producto(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+
+    return render(request, "tiendalibre/detalle.html", {
+        "producto": producto
+    })

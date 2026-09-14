@@ -1,0 +1,23 @@
+{% extends "tiendalibre/base.html" %}
+
+{% block title %}{{ producto.nombre }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ producto.nombre }}</h1>
+
+<p><strong>Marca:</strong> {{ producto.marca }}</p>
+
+<p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+
+<p><strong>Precio:</strong> ${{ producto.precio }}</p>
+
+{% if producto.imagen %}
+    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" width="300">
+{% endif %}
+
+<br><br>
+
+<a href="{% url 'catalogo' %}">← Volver al catálogo</a>
+
+{% endblock %}
