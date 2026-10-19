@@ -80,6 +80,32 @@
 <hr>
 
 <section>
+    <h2>Productos recientes</h2>
+
+    <div class="productos-grid">
+        {% for producto in productos_recientes %}
+            <article>
+                <h3>
+                    <a href="{% url 'detalle_producto' producto.pk %}">
+                        {{ producto.nombre }}
+                    </a>
+                </h3>
+                <p>Precio: ${{ producto.precio }}</p>
+                {% if producto.descripcion %}
+                    <p>{{ producto.descripcion|truncatechars:80 }}</p>
+                {% else %}
+                    <p>Sin descripción.</p>
+                {% endif %}
+            </article>
+        {% empty %}
+            <p>No hay productos recientes.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<hr>
+
+<section>
     <h2>¿Qué podés encontrar?</h2>
 
     <ul>
