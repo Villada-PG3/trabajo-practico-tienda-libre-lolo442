@@ -1,6 +1,5 @@
-
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, ListView
+from django.shortcuts import render
+from django.views.generic import TemplateView, ListView, DetailView
 from .models import Producto
 
 
@@ -67,6 +66,13 @@ class CatalogoView(ListView):
     model = Producto
     template_name = 'miapp/catalogo.html'
     context_object_name = 'productos'
+    paginate_by = 6
+
+
+class ProductoDetailView(DetailView):
+    model = Producto
+    template_name = 'miapp/detalle.html'
+    context_object_name = 'producto'
 
 
 def productos(request):
@@ -79,11 +85,3 @@ def productos(request):
 
 def acerca_de_mi(request):
     return render(request, 'miapp/acerca-de-mi.html')
-
-
-def detalle_producto(request, pk):
-    producto = get_object_or_404(Producto, pk=pk)
-
-    return render(request, 'miapp/detalle.html', {
-        'producto': producto
-    })
